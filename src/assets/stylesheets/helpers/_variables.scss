@@ -8,23 +8,11 @@ $poa-danger-color: #f21b57;
 $poa-green-color: #60db97;
 $poa-menu-icon-color: #60db97;
 
-$sokol-cyan: #6ac9b9;
-$sokol-cyan-darker: #41b19e;
-$sokol-freeze-color: #50bbda;
-$sokol-danger-color: #f24c67;
-$sokol-menu-icon-color: #fff;
-
-$xdai-green: #15bba6;
-$xdai-gray-darker: #132942;
-$xdai-gray: #173250;
-$xdai-gray-dark: #333;
-$xdai-menu-icon-color: $xdai-green;
-
-$kovan-cyan: #28aca4;
-$kovan-cyan-darker: #1f857f;
-$kovan-freeze-color: #50bbda;
-$kovan-danger-color: #f24c67;
-$kovan-menu-icon-color: #fff;
+$test-cyan: #6ac9b9;
+$test-cyan-darker: #41b19e;
+$test-freeze-color: #50bbda;
+$test-danger-color: #f24c67;
+$test-menu-icon-color: #fff;
 
 // colors
 $gray-text-color: #333;
@@ -82,17 +70,9 @@ $voting-negative-poa: #f21b57;
 $voting-neutral-poa: #50bbda;
 $voting-positive-poa: #60db97;
 
-$voting-negative-sokol: #f24c67;
-$voting-neutral-sokol: #50bbda;
-$voting-positive-sokol: #6ac9b9;
-
-$voting-negative-dai: #f21b57;
-$voting-neutral-dai: #50bbda;
-$voting-positive-dai: $xdai-green;
-
-$voting-negative-kovan: #f24c67;
-$voting-neutral-kovan: #50bbda;
-$voting-positive-kovan: #6ac9b9;
+$voting-negative-test: #f24c67;
+$voting-neutral-test: #50bbda;
+$voting-positive-test: #6ac9b9;
 
 // grid stuff
 $base-grid-gap: 30px;

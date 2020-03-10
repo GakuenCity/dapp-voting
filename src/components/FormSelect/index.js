@@ -10,6 +10,8 @@ export const FormSelect = ({
   id,
   name = '',
   networkBranch,
+  placeholder,
+  noResultsText,
   onChange,
   options,
   title,
@@ -25,7 +27,9 @@ export const FormSelect = ({
         name={name}
         onChange={onChange}
         options={options}
+        noResultsText={noResultsText}
         value={value}
+        placeholder={placeholder}
       />
       {hint ? <FormHint text={hint} networkBranch={networkBranch} /> : null}
     </div>

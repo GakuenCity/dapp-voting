@@ -1,16 +1,12 @@
 import React from 'react'
-import xDaiLogo from './xdai.svg'
 import poaLogo from './core.svg'
-import sokolLogo from './sokol.svg'
-import kovanLogo from './kovan.svg'
+import testLogo from './test.svg'
 
 const getLogoSrc = networkBranch => {
   return (
     {
       core: poaLogo,
-      sokol: sokolLogo,
-      dai: xDaiLogo,
-      kovan: kovanLogo
+      test: testLogo
     }[networkBranch] || poaLogo
   )
 }

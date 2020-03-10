@@ -25,30 +25,12 @@
         }
     }
 
-    &#{ & }-sokol {
-        background-color: $sokol-cyan;
+    &#{ & }-test {
+        background-color: $test-cyan;
 
         &:active,
         &:hover {
-            background-color: darken($sokol-cyan, 10%);
-        }
-    }
-
-    &#{ & }-dai {
-        background-color: $xdai-green;
-
-        &:active,
-        &:hover {
-            background-color: darken($xdai-green, 10%);
-        }
-    }
-
-    &#{ & }-kovan {
-        background-color: $kovan-cyan;
-
-        &:active,
-        &:hover {
-            background-color: darken($kovan-cyan, 10%);
+            background-color: darken($test-cyan, 10%);
         }
     }
 

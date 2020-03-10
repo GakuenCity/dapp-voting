@@ -5,10 +5,9 @@
 >
     <defs>
         <style type="text/css">
-            @import url('https://fonts.googleapis.com/css?family=Nunito:400');
-            text {
-                font-family: "Nunito", sans-serif;
-            }
+          text {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+          }
         </style>
     </defs>
     <path
@@ -23,7 +22,7 @@
         font-weight="300"
         x="63"
         y="17"
-    >Governance&#32;App</text>
+    >網路表決 DApp</text>
     <path
         d="M186 0a1 1 0 0 1 1 1v24a1 1 0 0 1-2 0V1a1 1 0 0 1 1-1z"
         fill-rule="evenodd"

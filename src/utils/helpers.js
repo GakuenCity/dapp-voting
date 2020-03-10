@@ -1,5 +1,6 @@
 import swal from 'sweetalert2'
 import { constants } from './constants'
+import messages from './messages'
 
 var toAscii = hex => {
   var str = '',
@@ -34,7 +35,11 @@ function sendTransactionByVotingKey(props, to, data, cb, warning) {
     async (error, hash) => {
       if (error) {
         commonStore.hideLoading()
-        swal('Error!', error.message, 'error')
+        let msg = ''
+        if (error.message.includes(constants.userDeniedTransactionPattern))
+          msg = `${messages.ERROR}: ${messages.USERDENIEDTRANSACTIONPATTERN}`
+        else msg = error.message
+        swal(messages.ERROR, msg, 'error')
       } else {
         try {
           let tx
@@ -47,11 +52,11 @@ function sendTransactionByVotingKey(props, to, data, cb, warning) {
           if (tx.status === true || tx.status === '0x1') {
             await cb(tx)
           } else {
-            swal('Warning!', warning, 'warning')
+            swal(messages.WARNING, warning, 'warning')
           }
         } catch (e) {
           commonStore.hideLoading()
-          swal('Error!', e.message, 'error')
+          swal(messages.ERROR, e.message, 'error')
         }
       }
     }

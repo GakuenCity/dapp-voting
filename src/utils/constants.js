@@ -1,6 +1,6 @@
 let constants = {}
-constants.organization = 'poanetwork'
-constants.repoName = 'poa-chain-spec'
+constants.organization = 'GakuenCity'
+constants.repoName = 'chain-spec'
 constants.addressesSourceFile = 'contracts.json'
 constants.ABIsSources = {
   KeysManager: 'KeysManager.abi.json',
@@ -14,9 +14,9 @@ constants.ABIsSources = {
   VotingToChangeProxyAddress: 'VotingToChangeProxyAddress.abi.json',
   VotingToManageEmissionFunds: 'VotingToManageEmissionFunds.abi.json'
 }
-
+constants.userDeniedTransactionPattern = 'User denied transaction'
 constants.NEW_MINING_KEY = {
-  label: 'New Mining Key',
+  label: '新的挖礦密鑰',
   lastNameAndKey: '',
   fullName: '',
   value: '0x0000000000000000000000000000000000000000'
@@ -31,59 +31,45 @@ constants.rootPath = '/poa-dapps-voting'
 constants.navigationData = [
   {
     icon: 'all',
-    title: 'All',
+    title: '全部',
     url: `${constants.rootPath}`
   },
   {
     icon: 'active',
-    title: 'Active',
+    title: '正在進行',
     url: `${constants.rootPath}/active`
   },
   {
     icon: 'finalize',
-    title: 'To Finalize',
+    title: '等待敲定',
     url: `${constants.rootPath}/tofinalize`
   },
   {
     disabled: true,
-    title: 'New Ballot',
+    title: '新的表決',
     url: `${constants.rootPath}/new`
   }
 ]
 
-constants.SOKOL = 'sokol'
 constants.CORE = 'core'
-constants.DAI = 'dai'
-constants.KOVAN = 'kovan'
+constants.TEST = 'test'
 
 constants.NETWORKS = {
-  '42': {
-    NAME: 'Kovan',
-    FULLNAME: 'Kovan Testnet',
-    RPC: 'https://kovan.infura.io/v3/1125fe73d87c4e5396678f4e3089b3dd',
-    BRANCH: constants.KOVAN,
-    SORTORDER: 3
-  },
-  '77': {
-    NAME: 'Sokol',
-    FULLNAME: 'Sokol Testnet',
-    RPC: 'https://sokol.poa.network',
-    BRANCH: constants.SOKOL,
-    SORTORDER: 4
-  },
-  '99': {
-    NAME: 'Core',
-    FULLNAME: 'POA Core',
-    RPC: 'https://core.poa.network',
+  '1004440004': {
+    NAME: 'CoreNet',
+    FULLNAME: '主網路',
+    RPC: 'https://infura.xyd4.com',
     BRANCH: constants.CORE,
-    SORTORDER: 1
+    SORTORDER: 1,
+    TESTNET: false
   },
-  '100': {
-    NAME: 'xDai',
-    FULLNAME: 'xDai Stable Chain',
-    RPC: 'https://dai.poa.network',
-    BRANCH: constants.DAI,
-    SORTORDER: 2
+  '1014440004': {
+    NAME: 'TestNet',
+    FULLNAME: '測試網路',
+    RPC: 'https://infura.pzhacm.org',
+    BRANCH: constants.TEST,
+    SORTORDER: 2,
+    TESTNET: true
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import messages from '../../utils/messages'
 
 export class SearchBar extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export class SearchBar extends React.Component {
           <input
             className={`sw-SearchBar_Input sw-SearchBar_Input-${networkBranch}`}
             onChange={onSearch}
-            placeholder="Search..."
+            placeholder={messages.SEARCH}
             type="search"
             value={this.state.searchTerm}
           />

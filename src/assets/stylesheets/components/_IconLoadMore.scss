@@ -3,16 +3,8 @@
         fill: $poa-purple;
     }
 
-    &#{ & }-sokol {
-        fill: $sokol-cyan;
-    }
-
-    &#{ & }-dai {
-        fill: $xdai-gray-dark;
-    }
-
-    &#{ & }-kovan {
-        fill: $kovan-cyan;
+    &#{ & }-test {
+        fill: $test-cyan;
     }
 
     .sw-ButtonLoadMore:hover & {

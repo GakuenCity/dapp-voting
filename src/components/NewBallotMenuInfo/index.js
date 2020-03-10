@@ -1,18 +1,19 @@
 import React from 'react'
+import messages from '../../utils/messages'
 
 export const NewBallotMenuInfo = ({ minThreshold, validatorsLength, keys, validatorLimitsMinThreshold, proxy }) => {
   return (
     <div className="mn-NewBallotMenuInfo">
-      <h2 className="mn-NewBallotMenuInfo_Title">Limits of the ballot</h2>
+      <h2 className="mn-NewBallotMenuInfo_Title">{messages.NEWBALLOTMENUINFOTITLE}</h2>
       <ul className="mn-NewBallotMenuInfo_List">
         <li className="mn-NewBallotMenuInfo_ListItem">
-          Minimum {minThreshold} from {validatorsLength} validators are required to pass the&nbsp; proposal
+          {messages.newBallotMenuInfoListItem1(minThreshold, validatorsLength)}
         </li>
-        <li className="mn-NewBallotMenuInfo_ListItem">You can create {Number(keys)} ballot(s) for keys</li>
+        <li className="mn-NewBallotMenuInfo_ListItem">{messages.newBallotMenuInfoListItem2(Number(keys))}</li>
         <li className="mn-NewBallotMenuInfo_ListItem">
-          You can create {Number(validatorLimitsMinThreshold)} ballot(s) for consensus
+          {messages.newBallotMenuInfoListItem3(Number(validatorLimitsMinThreshold))}
         </li>
-        <li className="mn-NewBallotMenuInfo_ListItem">You can create {Number(proxy)} ballot(s) for proxy</li>
+        <li className="mn-NewBallotMenuInfo_ListItem">{messages.newBallotMenuInfoListItem4(Number(proxy))}</li>
       </ul>
     </div>
   )

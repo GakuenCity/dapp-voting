@@ -20,16 +20,8 @@
         border-color: $poa-purple;
     }
 
-    &#{ & }-sokol {
-        border-color: $sokol-cyan;
-    }
-
-    &#{ & }-dai {
-        border-color: $xdai-gray;
-    }
-
-    &#{ & }-kovan {
-        border-color: $kovan-cyan;
+    &#{ & }-test {
+        border-color: $test-cyan;
     }
 
     @media (min-width: $breakpoint-md) {
@@ -49,15 +41,7 @@
         color: $poa-purple;
     }
 
-    .sw-ButtonLoadMore-sokol & {
-        color: $sokol-cyan;
-    }
-
-    .sw-ButtonLoadMore-dai & {
-        color: $xdai-gray;
-    }
-
-    .sw-ButtonLoadMore-kovan & {
-        color: $kovan-cyan;
+    .sw-ButtonLoadMore-test & {
+        color: $test-cyan;
     }
 }

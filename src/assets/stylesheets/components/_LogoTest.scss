@@ -1,19 +1,19 @@
-.sw-LogoPOA {
+.sw-LogoTest {
     align-items: center;
     display: flex;
     justify-content: center;
 
     .sw-Header & {
-        width: 167px;
+        width: 178px;
     }
 
     .sw-Footer & {
-        width: 130px;
+        height: 26px;
     }
 
 }
 
-.sw-LogoPOA_Image {
+.sw-LogoTest_Image {
     display: block;
     height: 100%;
     width: 100%;

@@ -4,6 +4,7 @@ import { FormInput } from '../FormInput'
 import { constants } from '../../utils/constants'
 import { inject, observer } from 'mobx-react'
 import { observable, action } from 'mobx'
+import messages from '../../utils/messages'
 
 @inject('ballotStore', 'contractsStore')
 @observer
@@ -24,7 +25,9 @@ export class BallotEmissionFundsMetadata extends React.Component {
   getEmissionFundsBalance = async () => {
     const { contractsStore } = this.props
     this.emissionFundsBalance =
-      contractsStore.web3Instance.utils.fromWei(await contractsStore.emissionFunds.balance(), 'ether') + ' POA'
+      contractsStore.web3Instance.utils.fromWei(await contractsStore.emissionFunds.balance(), 'ether') +
+      ' ' +
+      messages.COIN
   }
 
   @action('Get VotingToManageEmissionFunds.noActiveBallotExists')
@@ -75,37 +78,36 @@ export class BallotEmissionFundsMetadata extends React.Component {
     let note
 
     if (this.noActiveBallotExists === true) {
-      note = (
-        <p>
-          The ballot can be created starting from <b>{this.beginDateTime}</b> (local time) and will end on{' '}
-          <b>{this.endDateTime}</b> (local time).
-        </p>
-      )
+      note = <p>{messages.timeRange(this.beginDateTime, this.endDateTime)}</p>
     } else if (this.noActiveBallotExists !== true) {
       note = <p>To be able to create a new ballot, the previous ballot of this type must be finalized.</p>
     }
 
     const networkName = constants.NETWORKS[contractsStore.netId].NAME.toLowerCase()
-    const explorerLink = `https://blockscout.com/poa/${networkName}/address/${contractsStore.emissionFunds.address}`
-
+    let explorerLink = `https://blockscout.com/poa/${networkName}/address/${contractsStore.emissionFunds.address}`
+    if (networkName === 'core') {
+      explorerLink = `https://explorer.xyd4.com/address/${contractsStore.emissionFunds.address}`
+    } else {
+      explorerLink = `https://explorer.pzhacm.org/address/${contractsStore.emissionFunds.address}`
+    }
     return (
       <div className="frm-BallotEmissionFundsMetadata">
         <div className="frm-BallotEmissionFundsMetadata_Row">
           <FormInput
-            hint="The address which the funds will be sent to, in case of the majority of votes."
+            hint={messages.BALLOTEMISSIONFUNDSHINT}
             id="receiver"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'receiver', 'ballotEmissionFunds')}
-            title="Address of funds receiver"
+            title={messages.ADDRESSOFFUNDSRECEIVER}
             value={ballotStore.ballotEmissionFunds.receiver}
           />
           <FormInput
             disabled={true}
-            hint={`Current balance of <a href=${explorerLink} target="_blank">EmissionFunds contract</a>.`}
+            hint={messages.emissionFundsContractHint(explorerLink)}
             id="amount"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'receiver', 'ballotEmissionFunds')}
-            title="Current amount of funds"
+            title={messages.CURRENTAMOUNTOFFUNDS}
             value={this.emissionFundsBalance}
           />
         </div>

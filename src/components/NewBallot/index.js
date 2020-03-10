@@ -48,7 +48,7 @@ export class NewBallot extends React.Component {
     // if (ballotStore.isNewValidatorPersonalData) {
     //   for (let validatorProp in validatorStore) {
     //     if (validatorStore[validatorProp].length === 0) {
-    //       swal('Warning!', `Validator ${validatorProp} is empty`, 'warning')
+    //       swal(messages.WARNING, `Validator ${validatorProp} is empty`, 'warning')
     //       commonStore.hideLoading()
     //       return false
     //     }
@@ -56,7 +56,7 @@ export class NewBallot extends React.Component {
     // }
 
     if (!ballotStore.memo) {
-      swal('Warning!', messages.DESCRIPTION_IS_EMPTY, 'warning')
+      swal(messages.WARNING, messages.DESCRIPTION_IS_EMPTY, 'warning')
       commonStore.hideLoading()
       return false
     }
@@ -79,7 +79,7 @@ export class NewBallot extends React.Component {
       if (neededMinutes > 0) {
         neededMinutes = Math.abs(neededHours * 60 - neededMinutes)
         swal(
-          'Warning!',
+          messages.WARNING,
           messages.SHOULD_BE_MORE_THAN_MIN_DURATION(minBallotDurationInHours, duration, neededHours, neededMinutes),
           'warning'
         )
@@ -93,7 +93,7 @@ export class NewBallot extends React.Component {
         .format()
       const exceededMinutes = moment(ballotStore.endTime).diff(moment(twoWeeks), 'minutes')
       if (exceededMinutes > 0) {
-        swal('Warning!', messages.SHOULD_BE_LESS_OR_EQUAL_14_DAYS(duration), 'warning')
+        swal(messages.WARNING, messages.SHOULD_BE_LESS_OR_EQUAL_14_DAYS(duration), 'warning')
         commonStore.hideLoading()
         return false
       }
@@ -105,12 +105,12 @@ export class NewBallot extends React.Component {
           continue
         }
         if (!ballotStore.ballotKeys[ballotKeysProp]) {
-          swal('Warning!', `Ballot ${ballotKeysProp} is empty`, 'warning')
+          swal(messages.WARNING, `Ballot ${ballotKeysProp} is empty`, 'warning')
           commonStore.hideLoading()
           return false
         }
         if (ballotStore.ballotKeys[ballotKeysProp].length === 0) {
-          swal('Warning!', `Ballot ${ballotKeysProp} is empty`, 'warning')
+          swal(messages.WARNING, `Ballot ${ballotKeysProp} is empty`, 'warning')
           commonStore.hideLoading()
           return false
         }
@@ -119,14 +119,14 @@ export class NewBallot extends React.Component {
       let isAffectedKeyAddress = contractsStore.web3Instance.utils.isAddress(ballotStore.ballotKeys.affectedKey)
 
       if (!isAffectedKeyAddress) {
-        swal('Warning!', messages.AFFECTED_KEY_IS_NOT_ADDRESS_MSG, 'warning')
+        swal(messages.WARNING, messages.AFFECTED_KEY_IS_NOT_ADDRESS_MSG, 'warning')
         commonStore.hideLoading()
         return false
       }
 
       let isMiningKeyAddress = contractsStore.web3Instance.utils.isAddress(ballotStore.ballotKeys.miningKey.value)
       if (!isMiningKeyAddress) {
-        swal('Warning!', messages.MINING_KEY_IS_NOT_ADDRESS_MSG, 'warning')
+        swal(messages.WARNING, messages.MINING_KEY_IS_NOT_ADDRESS_MSG, 'warning')
         commonStore.hideLoading()
         return false
       }
@@ -135,7 +135,7 @@ export class NewBallot extends React.Component {
     if (ballotStore.isBallotForMinThreshold) {
       for (let ballotMinThresholdProp in ballotStore.ballotMinThreshold) {
         if (ballotStore.ballotMinThreshold[ballotMinThresholdProp].length === 0) {
-          swal('Warning!', `Ballot ${ballotMinThresholdProp} is empty`, 'warning')
+          swal(messages.WARNING, `Ballot ${ballotMinThresholdProp} is empty`, 'warning')
           commonStore.hideLoading()
           return false
         }
@@ -145,7 +145,7 @@ export class NewBallot extends React.Component {
     if (ballotStore.isBallotForProxy) {
       for (let ballotProxyProp in ballotStore.ballotProxy) {
         if (ballotStore.ballotProxy[ballotProxyProp].length === 0) {
-          swal('Warning!', `Ballot ${ballotProxyProp} is empty`, 'warning')
+          swal(messages.WARNING, `Ballot ${ballotProxyProp} is empty`, 'warning')
           commonStore.hideLoading()
           return false
         }
@@ -154,7 +154,7 @@ export class NewBallot extends React.Component {
       const isAddress = contractsStore.web3Instance.utils.isAddress(ballotStore.ballotProxy.proposedAddress)
 
       if (!isAddress) {
-        swal('Warning!', messages.PROPOSED_ADDRESS_IS_NOT_ADDRESS_MSG, 'warning')
+        swal(messages.WARNING, messages.PROPOSED_ADDRESS_IS_NOT_ADDRESS_MSG, 'warning')
         commonStore.hideLoading()
         return false
       }
@@ -162,7 +162,7 @@ export class NewBallot extends React.Component {
 
     if (ballotStore.isBallotForEmissionFunds) {
       if (ballotStore.ballotEmissionFunds.receiver.length === 0) {
-        swal('Warning!', `Address of funds receiver is empty`, 'warning')
+        swal(messages.WARNING, `Address of funds receiver is empty`, 'warning')
         commonStore.hideLoading()
         return false
       }
@@ -170,7 +170,7 @@ export class NewBallot extends React.Component {
       const isAddress = contractsStore.web3Instance.utils.isAddress(ballotStore.ballotEmissionFunds.receiver)
 
       if (!isAddress) {
-        swal('Warning!', messages.PROPOSED_ADDRESS_IS_NOT_ADDRESS_MSG, 'warning')
+        swal(messages.WARNING, messages.PROPOSED_ADDRESS_IS_NOT_ADDRESS_MSG, 'warning')
         commonStore.hideLoading()
         return false
       }
@@ -182,7 +182,7 @@ export class NewBallot extends React.Component {
       !ballotStore.isBallotForProxy &&
       !ballotStore.isBallotForEmissionFunds
     ) {
-      swal('Warning!', messages.BALLOT_TYPE_IS_EMPTY_MSG, 'warning')
+      swal(messages.WARNING, messages.BALLOT_TYPE_IS_EMPTY_MSG, 'warning')
       commonStore.hideLoading()
       return false
     }
@@ -262,13 +262,13 @@ export class NewBallot extends React.Component {
     }
 
     if (contractsStore.isEmptyVotingKey) {
-      swal('Warning!', messages.NO_METAMASK_MSG, 'warning')
+      swal(messages.WARNING, messages.NO_METAMASK_MSG, 'warning')
       return
     } else if (!contractsStore.networkMatch) {
-      swal('Warning!', messages.networkMatchError(contractsStore.netId), 'warning')
+      swal(messages.WARNING, messages.networkMatchError(contractsStore.netId), 'warning')
       return
     } else if (!contractsStore.isValidVotingKey) {
-      swal('Warning!', messages.invalidVotingKeyMsg(contractsStore.votingKey), 'warning')
+      swal(messages.WARNING, messages.invalidVotingKeyMsg(contractsStore.votingKey), 'warning')
       return
     }
 
@@ -302,7 +302,7 @@ export class NewBallot extends React.Component {
         }
         if (!areBallotParamsValid) {
           commonStore.hideLoading()
-          return swal('Warning!', 'The ballot input params are invalid', 'warning')
+          return swal(messages.WARNING, 'The ballot input params are invalid', 'warning')
         }
       }
 
@@ -327,14 +327,14 @@ export class NewBallot extends React.Component {
             .unix(emissionReleaseTime)
             .utc()
             .format('MMM Do YYYY, h:mm:ss a')
-          swal('Warning!', messages.EMISSION_RELEASE_TIME_IN_FUTURE(emissionReleaseTimeString), 'warning')
+          swal(messages.WARNING, messages.EMISSION_RELEASE_TIME_IN_FUTURE(emissionReleaseTimeString), 'warning')
           return
         }
 
         const noActiveBallotExists = await votingContract.noActiveBallotExists()
         if (!noActiveBallotExists) {
           commonStore.hideLoading()
-          swal('Warning!', messages.PREVIOUS_BALLOT_NOT_FINALIZED, 'warning')
+          swal(messages.WARNING, messages.PREVIOUS_BALLOT_NOT_FINALIZED, 'warning')
           return
         }
 
@@ -386,7 +386,7 @@ export class NewBallot extends React.Component {
           const card = await contractsStore.getCard(newId, contractType)
           ballotsStore.ballotCards.push(card)
 
-          swal('Congratulations!', messages.BALLOT_CREATED_SUCCESS_MSG, 'success').then(result => {
+          swal(messages.CONGRATULATIONS, messages.BALLOT_CREATED_SUCCESS_MSG, 'success').then(result => {
             push(`${commonStore.rootPath}`)
             window.scrollTo(0, 0)
           })
@@ -407,17 +407,17 @@ export class NewBallot extends React.Component {
       {
         active: ballotStore.BallotType.keys === ballotStore.ballotType,
         onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.keys),
-        text: 'Validator Management Ballot'
+        text: messages.VALIDATORMANAGEMENTBALLOT
       },
       {
         active: ballotStore.BallotType.minThreshold === ballotStore.ballotType,
         onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.minThreshold),
-        text: 'Consensus Threshold Ballot'
+        text: messages.CONSENSUSTHRESHOLDBALLOT
       },
       {
         active: ballotStore.BallotType.proxy === ballotStore.ballotType,
         onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.proxy),
-        text: 'Modify Proxy Contract Ballot'
+        text: messages.MODIFYPROXYBALLOT
       }
     ]
 
@@ -425,7 +425,7 @@ export class NewBallot extends React.Component {
       items.push({
         active: ballotStore.BallotType.emissionFunds === ballotStore.ballotType,
         onClick: e => ballotStore.changeBallotType(e, ballotStore.BallotType.emissionFunds),
-        text: 'Emission Funds Ballot'
+        text: messages.EMISSIONFUNDSBALLOT
       })
     }
 
@@ -477,7 +477,7 @@ export class NewBallot extends React.Component {
               id="ballot-description"
               networkBranch={networkBranch}
               onChange={e => ballotStore.setMemo(e)}
-              title="Description of the ballot"
+              title={messages.BALLOTDESCRIPTION}
               value={ballotStore.memo}
             />
             <Separator />

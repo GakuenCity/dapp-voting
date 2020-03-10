@@ -65,13 +65,13 @@ export class BallotCard extends React.Component {
   @computed
   get cancelOrFinalizeButtonDisplayName() {
     if (this.isFinalized) {
-      return 'Finalized'
+      return messages.FINALIZE
     } else if (this.isCanceled) {
-      return 'Canceled'
+      return messages.CANCELED
     } else if (this.timeToCancel.val > 0) {
-      return 'Cancel ballot'
+      return messages.CANCELBALLOT
     } else {
-      return 'Finalize ballot'
+      return messages.FINALIZEBALLOT
     }
   }
 
@@ -103,11 +103,11 @@ export class BallotCard extends React.Component {
     } else if (this.isCanceled) {
       return ''
     } else if (this.timeToCancel.val > 0) {
-      return `You can cancel this ballot within ${this.timeToCancel.displayValue}`
+      return messages.finalizeDescription(this.timeToCancel.displayValue)
     } else {
-      let description = 'Finalization is available after ballot time is finished'
+      let description = messages.finalizeDescription(-1)
       if (this.canBeFinalized !== null && this.nowTimeUnix - this.startTimeUnix > this.minBallotDuration) {
-        description += ' or all validators are voted'
+        description += messages.FINALIZEDESCRIPTIONPLUS
       }
       return description
     }
@@ -384,13 +384,13 @@ export class BallotCard extends React.Component {
       return false
     }
     if (contractsStore.isEmptyVotingKey) {
-      swal('Warning!', messages.NO_METAMASK_MSG, 'warning')
+      swal(messages.WARNING, messages.NO_METAMASK_MSG, 'warning')
       return false
     } else if (!contractsStore.networkMatch) {
-      swal('Warning!', messages.networkMatchError(contractsStore.netId), 'warning')
+      swal(messages.WARNING, messages.networkMatchError(contractsStore.netId), 'warning')
       return false
     } else if (!contractsStore.isValidVotingKey) {
-      swal('Warning!', messages.invalidVotingKeyMsg(contractsStore.votingKey), 'warning')
+      swal(messages.WARNING, messages.invalidVotingKeyMsg(contractsStore.votingKey), 'warning')
       return false
     }
     return true
@@ -398,11 +398,11 @@ export class BallotCard extends React.Component {
 
   vote = async ({ choice }) => {
     if (this.isCanceled) {
-      swal('Warning!', messages.INVALID_VOTE_MSG, 'warning')
+      swal(messages.WARNING, messages.INVALID_VOTE_MSG, 'warning')
       return
     }
     if (this.timeToStart.val > 0) {
-      swal('Warning!', messages.ballotIsNotActiveMsg(this.timeTo.displayValue), 'warning')
+      swal(messages.WARNING, messages.ballotIsNotActiveMsg(this.timeTo.displayValue), 'warning')
       return
     }
 
@@ -416,7 +416,7 @@ export class BallotCard extends React.Component {
     let isValidVote = await this.isValidVote()
     if (!isValidVote) {
       commonStore.hideLoading()
-      swal('Warning!', messages.INVALID_VOTE_MSG, 'warning')
+      swal(messages.WARNING, messages.INVALID_VOTE_MSG, 'warning')
       return
     }
 
@@ -467,7 +467,7 @@ export class BallotCard extends React.Component {
         ballotsStore.ballotCards[pos].props.votingState.canBeFinalized = this.canBeFinalized
         ballotsStore.ballotCards[pos].props.votingState.hasAlreadyVoted = this.hasAlreadyVoted
 
-        swal('Congratulations!', messages.VOTED_SUCCESS_MSG, 'success').then(result => {
+        swal(messages.CONGRATULATIONS, messages.VOTED_SUCCESS_MSG, 'success').then(result => {
           push(`${commonStore.rootPath}`)
         })
       },
@@ -515,7 +515,7 @@ export class BallotCard extends React.Component {
 
     if (!canCancel) {
       commonStore.hideLoading()
-      swal('Warning!', messages.INVALID_CANCEL_MSG, 'warning')
+      swal(messages.WARNING, messages.INVALID_CANCEL_MSG, 'warning')
       return
     }
 
@@ -532,7 +532,7 @@ export class BallotCard extends React.Component {
           this.canBeFinalized = false
           ballotsStore.ballotCards[pos].props.votingState.canBeFinalized = this.canBeFinalized
         }
-        swal('Congratulations!', messages.CANCELED_SUCCESS_MSG, 'success').then(result => {
+        swal(messages.CONGRATULATIONS, messages.CANCELED_SUCCESS_MSG, 'success').then(result => {
           push(`${commonStore.rootPath}`)
         })
       },
@@ -542,7 +542,7 @@ export class BallotCard extends React.Component {
 
   finalize = async e => {
     if (this.timeToStart.val > 0) {
-      swal('Warning!', messages.ballotIsNotActiveMsg(this.timeTo.displayValue), 'warning')
+      swal(messages.WARNING, messages.ballotIsNotActiveMsg(this.timeTo.displayValue), 'warning')
       return
     }
     const { commonStore, contractsStore, id, votingType, ballotsStore, pos } = this.props
@@ -553,7 +553,7 @@ export class BallotCard extends React.Component {
     }
 
     if (this.isFinalized) {
-      swal('Warning!', messages.ALREADY_FINALIZED_MSG, 'warning')
+      swal(messages.WARNING, messages.ALREADY_FINALIZED_MSG, 'warning')
       return
     }
     commonStore.showLoading()
@@ -565,7 +565,7 @@ export class BallotCard extends React.Component {
     }
     if (!_canBeFinalized) {
       commonStore.hideLoading()
-      swal('Warning!', messages.INVALID_FINALIZE_MSG, 'warning')
+      swal(messages.WARNING, messages.INVALID_FINALIZE_MSG, 'warning')
       return
     }
 
@@ -589,11 +589,11 @@ export class BallotCard extends React.Component {
             this.canBeFinalized = false
             ballotsStore.ballotCards[pos].props.votingState.canBeFinalized = this.canBeFinalized
           }
-          swal('Congratulations!', messages.FINALIZED_SUCCESS_MSG, 'success').then(result => {
+          swal(messages.CONGRATULATIONS, messages.FINALIZED_SUCCESS_MSG, 'success').then(result => {
             push(`${commonStore.rootPath}`)
           })
         } else {
-          swal('Warning!', messages.INVALID_FINALIZE_MSG, 'warning')
+          swal(messages.WARNING, messages.INVALID_FINALIZE_MSG, 'warning')
         }
       },
       messages.FINALIZE_FAILED_TX
@@ -675,13 +675,13 @@ export class BallotCard extends React.Component {
   typeName(type) {
     switch (type) {
       case 'votingToChangeMinThreshold':
-        return 'Consensus'
+        return messages.CONSENSUSTHRESHOLDBALLOT
       case 'votingToChangeKeys':
-        return 'Keys'
+        return messages.VALIDATORMANAGEMENTBALLOT
       case 'votingToChangeProxy':
-        return 'Proxy'
+        return messages.MODIFYPROXYBALLOT
       case 'votingToManageEmissionFunds':
-        return 'EmissionFunds'
+        return messages.EMISSIONFUNDSBALLOT
       default:
         return ''
     }
@@ -703,21 +703,21 @@ export class BallotCard extends React.Component {
       votes = [
         {
           onClick: e => this.vote({ choice: BURN }),
-          text: 'Burn',
+          text: messages.BURN,
           type: 'negative',
           votesAmount: this.votesBurnNumber,
           votesPercentage: this.votesBurnPercents
         },
         {
           onClick: e => this.vote({ choice: FREEZE }),
-          text: 'Freeze',
+          text: messages.FREEZE,
           type: 'neutral',
           votesAmount: this.votesFreezeNumber,
           votesPercentage: this.votesFreezePercents
         },
         {
           onClick: e => this.vote({ choice: SEND }),
-          text: 'Send',
+          text: messages.SEND,
           type: 'positive',
           votesAmount: this.votesSendNumber,
           votesPercentage: this.votesSendPercents
@@ -727,7 +727,7 @@ export class BallotCard extends React.Component {
       votes = [
         {
           onClick: e => this.vote({ choice: REJECT }),
-          text: 'No',
+          text: messages.NO,
           type: 'negative',
           votesAmount: this.votesAgainstNumber,
           votesPercentage: this.votesAgainstPercents
@@ -735,7 +735,7 @@ export class BallotCard extends React.Component {
         {
           onClick: e => this.vote({ choice: ACCEPT }),
           side: 'right',
-          text: 'Yes',
+          text: messages.YES,
           type: 'positive',
           votesAmount: this.votesForNumber,
           votesPercentage: this.votesForPercents
@@ -746,11 +746,11 @@ export class BallotCard extends React.Component {
     return (
       <div className={`sw-BallotCard ${!this.showCard() ? 'hidden' : ''}`}>
         <div className="sw-BallotAbout">
-          <BallotDataPair dataType="name" title="Proposer" value={[this.creator]} />
+          <BallotDataPair dataType="name" title={messages.PROPOSER} value={[this.creator]} />
           {children}
           <BallotDataPair
             dataType="time"
-            title="Ballot Time (UTC)"
+            title={messages.BALLOTTIME}
             value={[this.startTime, `${this.timeTo.displayValue} (${this.timeTo.title})`]}
           />
         </div>

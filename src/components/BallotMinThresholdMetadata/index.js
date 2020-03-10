@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormInput } from '../FormInput'
 import { inject, observer } from 'mobx-react'
+import messages from '../../utils/messages'
 
 @inject('ballotStore')
 @observer
@@ -12,20 +13,20 @@ export class BallotMinThresholdMetadata extends React.Component {
       <div className="frm-BallotMinThresholdMetadata">
         <div className="frm-BallotMinThresholdMetadata_Row">
           <FormInput
-            hint="Proposed value of the minimum threshold for keys ballot consensus."
+            hint={messages.PROPOSEDVALUEREMARK}
             id="key"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'proposedValue', 'ballotMinThreshold')}
-            title="Proposed Value"
+            title={messages.PROPOSEDVALUE}
             type="number"
             value={ballotStore.ballotMinThreshold.proposedValue}
           />
           <FormInput
-            hint="Ballot's end time."
+            hint={messages.BALLOTENDTIME}
             id="datetime-local"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'endTime')}
-            title="Ballot End"
+            title={messages.BALLOTEND}
             type="datetime-local"
             value={ballotStore.endTime}
           />

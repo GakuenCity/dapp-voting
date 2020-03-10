@@ -1,4 +1,5 @@
 import React from 'react'
+import messages from '../../utils/messages'
 
 const MAX_DETAILS_LENGTH = 500
 
@@ -34,7 +35,7 @@ export class BallotInfoContainer extends React.Component {
     return (
       <div className="bc-BallotInfoContainer">
         <div className="bc-BallotInfoContainer_Info bc-BallotInfoContainer_Info-minimum">
-          Minimum {threshold} validators are required to pass the proposal
+          {messages.ballotThreshold(threshold)}
         </div>
         <div
           className={`bc-BallotInfoContainer_Info bc-BallotInfoContainer_Info-details ${

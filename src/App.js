@@ -47,26 +47,26 @@ class App extends Component {
         .then(() => {
           if (!contractsStore.injectedWeb3) {
             swal({
-              title: 'Error',
+              title: messages.ERROR,
               html: messages.NO_METAMASK_MSG,
               type: 'error'
             })
           } else if (!contractsStore.networkMatch) {
             swal({
-              title: 'Warning!',
+              title: messages.WARNING,
               html: messages.networkMatchError(contractsStore.netId),
               type: 'warning'
             })
           } else if (!contractsStore.isValidVotingKey) {
             swal({
-              title: 'Warning!',
+              title: messages.WARNING,
               html: messages.invalidVotingKeyMsg(contractsStore.votingKey),
               type: 'warning'
             })
           }
         })
         .catch(error => {
-          swal('Error', error.message, 'error')
+          swal(messages.ERROR, error.message, 'error')
         })
     }
     return <NewBallot networkBranch={this.getVotingNetworkBranch()} />
@@ -98,7 +98,7 @@ class App extends Component {
       return obj.title
     }
 
-    return 'All'
+    return messages.ALL
   }
 
   setSearchTerm = term => {

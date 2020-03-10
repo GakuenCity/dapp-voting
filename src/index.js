@@ -6,7 +6,6 @@ import ballotStore from './stores/BallotStore'
 import ballotsStore from './stores/BallotsStore'
 import commonStore from './stores/CommonStore'
 import contractsStore from './stores/ContractsStore'
-import createBrowserHistory from 'history/createBrowserHistory'
 import getWeb3 from './utils/getWeb3'
 import registerServiceWorker from './utils/registerServiceWorker'
 import swal from 'sweetalert2'
@@ -17,6 +16,8 @@ import { RouterStore, syncHistoryWithStore } from 'mobx-react-router'
 import { constants } from './utils/constants'
 import { getContractsAddresses } from './contracts/addresses'
 import { getNetworkBranch } from './utils/utils'
+import messages from './utils/messages'
+import { createBrowserHistory } from 'history'
 
 const browserHistory = createBrowserHistory()
 const routingStore = new RouterStore()
@@ -47,7 +48,7 @@ class AppMainRouter extends Component {
         console.error(error.message)
         commonStore.hideLoading()
         swal({
-          title: 'Error',
+          title: messages.ERROR,
           html: generateElement(error.message),
           type: 'error'
         })
@@ -79,9 +80,9 @@ class AppMainRouter extends Component {
       setValidatorMetadata
     ]
 
-    const networkName = constants.NETWORKS[web3Config.netId].NAME.toLowerCase()
-    if (networkName === constants.CORE || networkName === constants.SOKOL) {
-      // if we're in Core or Sokol
+    //const networkName = constants.NETWORKS[web3Config.netId].NAME
+    const networkBranch = constants.NETWORKS[web3Config.netId].BRANCH
+    if (networkBranch === constants.TEST) {
       promises.push(contractsStore.setEmissionFunds(web3Config))
       promises.push(contractsStore.setVotingToManageEmissionFunds(web3Config))
     }

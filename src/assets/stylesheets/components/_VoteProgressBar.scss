@@ -28,40 +28,16 @@
         background-color: $voting-positive-poa;
     }
 
-    &#{ & }-negative#{ & }-sokol {
-        background-color: $voting-negative-sokol;
+    &#{ & }-negative#{ & }-test {
+        background-color: $voting-negative-test;
     }
 
-    &#{ & }-neutral#{ & }-sokol {
-        background-color: $voting-neutral-sokol;
+    &#{ & }-neutral#{ & }-test {
+        background-color: $voting-neutral-test;
     }
 
-    &#{ & }-positive#{ & }-sokol {
-        background-color: $voting-positive-sokol;
-    }
-
-    &#{ & }-negative#{ & }-dai {
-        background-color: $voting-negative-dai;
-    }
-
-    &#{ & }-neutral#{ & }-dai {
-        background-color: $voting-neutral-dai;
-    }
-
-    &#{ & }-positive#{ & }-dai {
-        background-color: $voting-positive-dai;
-    }
-
-    &#{ & }-negative#{ & }-kovan {
-        background-color: $voting-negative-kovan;
-    }
-
-    &#{ & }-neutral#{ & }-kovan {
-        background-color: $voting-neutral-kovan;
-    }
-
-    &#{ & }-positive#{ & }-kovan {
-        background-color: $voting-positive-kovan;
+    &#{ & }-positive#{ & }-test {
+        background-color: $voting-positive-test;
     }
 }
 

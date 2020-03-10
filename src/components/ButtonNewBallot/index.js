@@ -3,6 +3,7 @@ import { IconAdd } from '../IconAdd'
 import { NavLink } from 'react-router-dom'
 import { constants } from '../../utils/constants'
 import { scrollToTop } from '../../utils/utils'
+import messages from '../../utils/messages'
 
 export const ButtonNewBallot = ({ extraClassName = '', networkBranch }) => {
   return (
@@ -11,7 +12,7 @@ export const ButtonNewBallot = ({ extraClassName = '', networkBranch }) => {
       onClick={scrollToTop()}
       to={`${constants.rootPath}/new`}
     >
-      New Ballot <IconAdd networkBranch={networkBranch} />
+      {messages.NEWBALLOT} <IconAdd networkBranch={networkBranch} />
     </NavLink>
   )
 }

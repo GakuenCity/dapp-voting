@@ -2,6 +2,7 @@ import React from 'react'
 import { BallotCard } from '../BallotCard'
 import { BallotDataPair } from '../BallotDataPair'
 import { inject, observer } from 'mobx-react'
+import messages from '../../utils/messages'
 
 @inject('commonStore', 'routing')
 @observer
@@ -16,19 +17,19 @@ export class BallotKeysCard extends React.Component {
     if (votingState.isAddMining) {
       affectedKeyType = 'key-wide'
       if (votingState.newVotingKey || votingState.newPayoutKey) {
-        affectedKey = `Mining: ${votingState.affectedKey}`
-        if (votingState.newVotingKey) newVotingKey = `Voting: ${votingState.newVotingKey}`
-        if (votingState.newPayoutKey) newPayoutKey = `Payout: ${votingState.newPayoutKey}`
+        affectedKey = `${messages.MINING}: ${votingState.affectedKey}`
+        if (votingState.newVotingKey) newVotingKey = `${messages.VOTING}: ${votingState.newVotingKey}`
+        if (votingState.newPayoutKey) newPayoutKey = `${messages.PAYOUT}: ${votingState.newPayoutKey}`
       }
     }
 
     return (
       <BallotCard votingType="votingToChangeKeys" votingState={votingState} id={id} pos={pos}>
-        <BallotDataPair dataType="action" title="Action" value={[votingState.ballotTypeDisplayName]} />
-        <BallotDataPair dataType="type" title="Key type" value={[votingState.affectedKeyTypeDisplayName]} />
+        <BallotDataPair dataType="action" title={messages.ACTION} value={[votingState.ballotTypeDisplayName]} />
+        <BallotDataPair dataType="type" title={messages.KEYTYPE} value={[votingState.affectedKeyTypeDisplayName]} />
         <BallotDataPair
           dataType={affectedKeyType}
-          title="Affected key"
+          title={messages.AFFECTEDKEY}
           value={[affectedKey, newVotingKey, newPayoutKey]}
         />
         {!votingState.isAddMining ? (

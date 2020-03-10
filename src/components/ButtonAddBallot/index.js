@@ -1,5 +1,6 @@
 import React from 'react'
 import { IconAdd } from '../IconAdd'
+import messages from '../../utils/messages'
 
 export const ButtonAddBallot = ({ extraClassName = '', networkBranch, onClick }) => {
   return (
@@ -8,7 +9,8 @@ export const ButtonAddBallot = ({ extraClassName = '', networkBranch, onClick })
       onClick={onClick}
       type="button"
     >
-      Add Ballot <IconAdd networkBranch={networkBranch} />
+      {messages.ADDBALLOT}
+      <IconAdd networkBranch={networkBranch} />
     </button>
   )
 }

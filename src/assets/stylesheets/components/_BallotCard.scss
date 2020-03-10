@@ -18,30 +18,21 @@
 ///////////////////////////
 .color-primary {
     color: $poa-purple;
-    .sokol & {
-        color: $sokol-cyan;
-    }
-    .kovan & {
-        color: $kovan-cyan;
+    .test & {
+        color: $test-cyan;
     }
 }
 
 .color-danger {
     color: $poa-danger-color;
-    .sokol & {
-        color: $sokol-danger-color;
-    }
-    .kovan & {
-        color: $kovan-danger-color;
+    .test & {
+        color: $test-danger-color;
     }
 }
 
 .color-success {
     color: $poa-green-color;
-    .sokol & {
-        color: $sokol-cyan;
-    }
-    .kovan & {
-        color: $kovan-cyan;
+    .test & {
+        color: $test-cyan;
     }
 }

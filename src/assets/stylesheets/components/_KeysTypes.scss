@@ -53,32 +53,12 @@
         }
     }
 
-    .frm-KeysTypes_Radio:checked + &#{ & }-sokol {
+    .frm-KeysTypes_Radio:checked + &#{ & }-test {
         &,
         &:hover {
-            background-color: $sokol-cyan;
-            border-color: $sokol-cyan;
-            box-shadow: 0 5px 10px 0 rgba($sokol-cyan, 0.3);
-            color: #fff;
-        }
-    }
-
-    .frm-KeysTypes_Radio:checked + &#{ & }-dai {
-        &,
-        &:hover {
-            background-color: $xdai-green;
-            border-color: $xdai-green;
-            box-shadow: 0 5px 10px 0 rgba($xdai-green, 0.3);
-            color: #fff;
-        }
-    }
-
-    .frm-KeysTypes_Radio:checked + &#{ & }-kovan {
-        &,
-        &:hover {
-            background-color: $kovan-cyan;
-            border-color: $kovan-cyan;
-            box-shadow: 0 5px 10px 0 rgba($kovan-cyan, 0.3);
+            background-color: $test-cyan;
+            border-color: $test-cyan;
+            box-shadow: 0 5px 10px 0 rgba($test-cyan, 0.3);
             color: #fff;
         }
     }

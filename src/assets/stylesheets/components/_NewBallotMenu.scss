@@ -35,27 +35,11 @@
         }
     }
 
-    &#{ & }-sokol#{ & }-active {
-       color: $sokol-cyan;
+    &#{ & }-test#{ & }-active {
+       color: $test-cyan;
 
         &::before {
-            background-color: $sokol-cyan;
-        }
-    }
-
-    &#{ & }-dai#{ & }-active {
-       color: $xdai-green;
-
-        &::before {
-            background-color: $xdai-green;
-        }
-    }
-
-    &#{ & }-kovan#{ & }-active {
-       color: $kovan-cyan;
-
-        &::before {
-            background-color: $kovan-cyan;
+            background-color: $test-cyan;
         }
     }
 }

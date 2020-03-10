@@ -60,9 +60,14 @@ export default async function getWeb3(netId, updateKeys) {
 
   netId = Number(netId)
 
+  if (netId !== 1004440004 && netId !== 1014440004) {
+    throw Error(messages.UNKNOWN_NETWORK)
+  }
+
   const network = constants.NETWORKS[netId]
   const injectedWeb3 = web3 !== null
   let netIdName = network.NAME
+  let netFullName = network.FULLNAME
   let defaultAccount = null
   let networkMatch = false
 
@@ -97,7 +102,7 @@ export default async function getWeb3(netId, updateKeys) {
     web3 = new Web3(new Web3.providers.HttpProvider(network.RPC))
   }
 
-  document.title = `${netIdName} - POA Governance DApp`
+  document.title = `${netFullName} - 投票和治理 Dapp`
 
   return {
     web3Instance: web3,

@@ -15,14 +15,8 @@
     &#{ & }-core {
         background-color: $poa-purple-darker;
     }
-    &#{ & }-sokol {
-        background-color: $sokol-cyan-darker;
-    }
-    &#{ & }-dai {
-        background-color: $xdai-gray-darker;
-    }
-    &#{ & }-kovan {
-        background-color: $kovan-cyan-darker;
+    &#{ & }-test {
+        background-color: $test-cyan-darker;
     }
 }
 
@@ -61,16 +55,8 @@
         @include input-color(rgba(255, 255, 255, 0.5), #fff);
         background-image: url('#{ $base-images-path }/SearchBar/core.svg');
     }
-    &#{ & }-sokol {
+    &#{ & }-test {
         @include input-color(rgba(255, 255, 255, 0.5), #fff);
-        background-image: url('#{ $base-images-path }/SearchBar/sokol.svg');
-    }
-    &#{ & }-dai {
-        @include input-color(rgba(255, 255, 255, 0.5), #fff);
-        background-image: url('#{ $base-images-path }/SearchBar/dai.svg');
-    }
-    &#{ & }-kovan {
-        @include input-color(rgba(255, 255, 255, 0.5), #fff);
-        background-image: url('#{ $base-images-path }/SearchBar/kovan.svg');
+        background-image: url('#{ $base-images-path }/SearchBar/test.svg');
     }
 }

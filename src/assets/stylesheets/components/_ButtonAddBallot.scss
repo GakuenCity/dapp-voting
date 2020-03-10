@@ -27,30 +27,12 @@ $sw-ButtonAddBallot-height: 44px;
         }
     }
 
-    &#{ & }-sokol {
-        background-color: $sokol-cyan;
+    &#{ & }-test {
+        background-color: $test-cyan;
         color: #fff;
 
         &:hover {
-            background-color: darken($sokol-cyan, 5%);
-        }
-    }
-
-    &#{ & }-dai {
-        background-color: $xdai-green;
-        color: #fff;
-
-        &:hover {
-            background-color: lighten($xdai-green, 5%);
-        }
-    }
-
-    &#{ & }-kovan {
-        background-color: $kovan-cyan;
-        color: #fff;
-
-        &:hover {
-            background-color: darken($kovan-cyan, 5%);
+            background-color: darken($test-cyan, 5%);
         }
     }
 }

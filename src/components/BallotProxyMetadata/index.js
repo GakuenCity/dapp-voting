@@ -2,6 +2,7 @@ import React from 'react'
 import { FormInput } from '../FormInput'
 import { FormSelect } from '../FormSelect'
 import { inject, observer } from 'mobx-react'
+import messages from '../../utils/messages'
 
 @inject('ballotStore')
 @observer
@@ -24,30 +25,30 @@ export class BallotProxyMetadata extends React.Component {
       <div className="frm-BallotProxyMetadata">
         <div className="frm-BallotProxyMetadata_Row">
           <FormInput
-            hint="Proposed address of a new proxy contract."
+            hint={messages.PROPOSEDADDRREMARK}
             id="key"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'proposedAddress', 'ballotProxy')}
-            title="Proposed Address"
+            title={messages.PROPOSEDADDR}
             value={ballotStore.ballotProxy.proposedAddress}
           />
           <FormSelect
-            hint="Choose proxy contract type."
+            hint={messages.CONTRACTTYPEREMARK}
             id="contract-type"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'contractType', 'ballotProxy')}
             options={options}
-            title="Contract Type"
+            title={messages.CONTRACTTYPE}
             value={ballotStore.ballotProxy.contractType}
           />
         </div>
         <div className="frm-BallotProxyMetadata_Row">
           <FormInput
-            hint="Ballot's end time."
+            hint={messages.BALLOTENDTIME}
             id="datetime-local"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'endTime')}
-            title="Ballot End"
+            title={messages.BALLOTEND}
             type="datetime-local"
             value={ballotStore.endTime}
           />

@@ -36,48 +36,10 @@ $sw-ButtonNewBallot-height: 36px;
         }
     }
 
-    &#{ & }-sokol {
+    &#{ & }-test {
         background-color: #fff;
-        box-shadow: 0 5px 10px 0 rgba($sokol-cyan, 0.3);
-        color: $sokol-cyan;
-
-        &:active,
-        &:hover {
-            background-color: darken(#fff, 5%);
-        }
-
-        &.active {
-            &,
-            &:active,
-            &:hover {
-                background-color: #fff;
-            }
-        }
-    }
-
-    &#{ & }-dai {
-        background-color: $xdai-menu-icon-color;
-        box-shadow: 0 5px 10px 0 rgba($xdai-menu-icon-color, 0.3);
-        color: #fff;
-
-        &:active,
-        &:hover {
-            background-color: lighten($xdai-menu-icon-color, 5%);
-        }
-
-        &.active {
-            &,
-            &:active,
-            &:hover {
-                background-color: $xdai-menu-icon-color;
-            }
-        }
-    }
-
-    &#{ & }-kovan {
-        background-color: #fff;
-        box-shadow: 0 5px 10px 0 rgba($kovan-cyan, 0.3);
-        color: $kovan-cyan;
+        box-shadow: 0 5px 10px 0 rgba($test-cyan, 0.3);
+        color: $test-cyan;
 
         &:active,
         &:hover {

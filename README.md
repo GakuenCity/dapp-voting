@@ -1,34 +1,17 @@
-# POA Network Governance Dapp
+# POA網上投票 Dapp
 
-## Base supported networks
-
-- Core POA network (RPC endpoint: `https://core.poa.network`)
-- xDai chain (RPC endpoint: `https://dai.poa.network`)
-- Sokol testnet (RPC endpoint: `https://sokol.poa.network`)
-- Kovan testnet (RPC endpoint: `https://kovan.infura.io/`)
-
-## Supported browsers
+## 支援瀏覽器
 
 * Google Chrome v 59.0.3071.115+
 
-## MetaMask/Nifty Wallet extensions setup
+## MetaMask/Nifty Wallet 擴充插件設定
 
-* Connect to POA Network in MetaMask extension (See [POA Network on MetaMask](https://github.com/poanetwork/wiki/wiki/POA-Network-on-MetaMask)) or in Nifty Wallet extension (See [POA Network on Nifty Wallet](https://github.com/poanetwork/wiki/wiki/POA-Network-on-Nifty-Wallet)) and import your voting key.
+* 在MetaMask中連接到POA網路 ([透過 MetaMask 使用 GakuenCity的POA 網路](https://github.com/GakuenCity/wiki/wiki/%E9%80%8F%E9%81%8E-MetaMask-%E4%BD%BF%E7%94%A8-GakuenCity%E7%9A%84POA-%E7%B6%B2%E8%B7%AF)) 或 Nifty Wallet ([透過 Nifty Wallet 使用 GakuenCity的POA 網路](https://github.com/GakuenCity/wiki/wiki/%E9%80%8F%E9%81%8E-Nifty-Wallet-%E4%BD%BF%E7%94%A8-GakuenCity%E7%9A%84POA-%E7%B6%B2%E8%B7%AF))
 
+* 匯入你的初始化密鑰到MetaMask或者Nifty之類的乙太坊瀏覽器擴充插件: 點擊匯入賬戶, 選擇類型為JSON格式檔案, 選擇JSON檔案後輸入密碼點擊匯入 (可以查看 [MetaMask](https://github.com/GakuenCity/wiki/wiki/%E9%80%8F%E9%81%8E-MetaMask-%E4%BD%BF%E7%94%A8-GakuenCity%E7%9A%84POA-%E7%B6%B2%E8%B7%AF#%E5%AF%86%E9%91%B0%E5%8C%AF%E5%85%A5) 或者 [Nifty Wallet](https://github.com/GakuenCity/wiki/wiki/%E9%80%8F%E9%81%8E-Nifty-Wallet-%E4%BD%BF%E7%94%A8-GakuenCity%E7%9A%84POA-%E7%B6%B2%E8%B7%AF#%E5%AF%86%E9%91%B0%E5%8C%AF%E5%85%A5)的幫助).
 
-## Governance Dapp overview
+## 從源代碼運行
 
-Please check related posts in wiki [Governance Overview](https://github.com/poanetwork/wiki/wiki/Governance-Overview) and [Ballots life cycle](https://github.com/poanetwork/wiki/wiki/Ballots-Overview.-Life-cycle-and-limits)
+1) `yarn`
 
-
-## Configuration
-Governance DApp is configured with [POA Network governance contracts](https://github.com/poanetwork/poa-network-consensus-contracts)
-
-There are contracts' addresses for [Sokol](https://github.com/poanetwork/poa-chain-spec/blob/sokol/contracts.json), [Core](https://github.com/poanetwork/poa-chain-spec/blob/core/contracts.json), [xDai](https://github.com/poanetwork/poa-chain-spec/blob/dai/contracts.json), and [Kovan](https://github.com/poanetwork/poa-chain-spec/blob/kovan/contracts.json).
-
-
-## Building from source
-
-1) `npm i`
-
-2) `npm start`
+2) `yarn start`

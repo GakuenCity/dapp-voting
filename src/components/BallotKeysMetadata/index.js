@@ -2,6 +2,7 @@ import React from 'react'
 import { FormInput } from '../FormInput'
 import { FormSelect } from '../FormSelect'
 import { inject, observer } from 'mobx-react'
+import messages from '../../utils/messages'
 
 @inject('ballotStore', 'contractsStore')
 @observer
@@ -33,55 +34,53 @@ export class BallotKeysMetadata extends React.Component {
             id="key"
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'affectedKey', 'ballotKeys')}
-            title={ballotStore.isNewValidatorPersonalData ? 'New Mining Key' : 'Affected Key'}
+            title={ballotStore.isNewValidatorPersonalData ? messages.NEWMININGKEY : messages.AFFECTEDKEY}
             value={ballotStore.ballotKeys.affectedKey}
-            hint={`${
-              ballotStore.isNewValidatorPersonalData
-                ? 'Mining key address of new validator.'
-                : 'Affected key address of validator to vote for.'
-            }
-            <br>Example: 0xc70760D23557A4FDE612C0bE63b26EBD023C51Ee.`}
+            hint={`${ballotStore.isNewValidatorPersonalData ? messages.NEWMININGKEYREMARK : messages.AFFECTEDKEYREMARK}
+            <br>${messages.EXAMPLEADDR}`}
           />
           <FormSelect
             disabled={ballotStore.isNewValidatorPersonalData}
-            hint="Mining key address of validator to vote for.<br />Example: 0xc70760D23557A4FDE612C0bE63b26EBD023C51Ee."
+            hint={`${messages.MININGKEYV2V}<br />${messages.EXAMPLEADDR}`}
             id="mining-key-select"
             name="form-field-name"
             networkBranch={networkBranch}
             onChange={ballotStore.setMiningKey}
             options={options}
-            title="Mining Key"
+            placeholder={messages.SELECT}
+            noResultsText={messages.NORESULTSTEXT}
+            title={messages.MININGKEY}
             value={ballotStore.ballotKeys.miningKey}
           />
         </div>
         {this.showNewVotingPayoutKeys() ? (
           <div className="frm-BallotKeysMetadata_Row">
             <FormInput
-              hint="Voting key address of new validator.<br />Example: 0xc70760D23557A4FDE612C0bE63b26EBD023C51Ee."
+              hint={`${messages.NEWVOTINGKEYREMARK}<br />${messages.EXAMPLEADDR}`}
               id="new-voting-key"
               networkBranch={networkBranch}
               onChange={e => ballotStore.changeBallotMetadata(e, 'newVotingKey', 'ballotKeys')}
-              title="New Voting Key"
+              title={messages.VOTINGKEY}
               value={ballotStore.ballotKeys.newVotingKey}
             />
             <FormInput
-              hint="Payout key address of new validator.<br />Example: 0xc70760D23557A4FDE612C0bE63b26EBD023C51Ee."
+              hint={`${messages.NEWPAYOUTKEYREMARK}<br />${messages.EXAMPLEADDR}`}
               id="new-payout-key"
               networkBranch={networkBranch}
               onChange={e => ballotStore.changeBallotMetadata(e, 'newPayoutKey', 'ballotKeys')}
-              title="New Payout Key"
+              title={messages.PAYOUTKEY}
               value={ballotStore.ballotKeys.newPayoutKey}
             />
           </div>
         ) : null}
         <div className="frm-BallotKeysMetadata_Row">
           <FormInput
-            hint="Ballot's end time."
+            hint={messages.BALLOTENDTIME}
             id="datetime-local"
             min={ballotStore.endTime}
             networkBranch={networkBranch}
             onChange={e => ballotStore.changeBallotMetadata(e, 'endTime')}
-            title="Ballot End"
+            title={messages.BALLOTEND}
             type="datetime-local"
             value={ballotStore.endTime}
           />

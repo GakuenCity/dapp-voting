@@ -1,6 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { FormHint } from '../FormHint'
+import messages from '../../utils/messages'
 
 @inject('ballotStore')
 @observer
@@ -11,58 +12,58 @@ export class KeysTypes extends React.Component {
       [
         {
           checked: ballotStore.isAddKeysBallotType,
-          hint: 'Add new key.',
+          hint: messages.ADDKEYREMARK,
           id: 'add-key',
           name: 'key-control',
           onChange: e => ballotStore.changeKeysBallotType(e, ballotStore.KeysBallotType.add),
-          text: 'Add key',
+          text: messages.ADDKEY,
           value: ballotStore.KeysBallotType.add
         },
         {
           checked: ballotStore.isRemoveKeysBallotType,
-          hint: 'Remove existing key.',
+          hint: messages.REMOVEKEYREMARK,
           id: 'remove-key',
           name: 'key-control',
           onChange: e => ballotStore.changeKeysBallotType(e, ballotStore.KeysBallotType.remove),
-          text: 'Remove key',
+          text: messages.REMOVEKEY,
           value: ballotStore.KeysBallotType.remove
         },
         {
           checked: ballotStore.isSwapKeysBallotType,
-          hint: 'Remove existing key and add new key.',
+          hint: messages.SWAPKEYREMARK,
           id: 'swap-key',
           name: 'key-control',
           onChange: e => ballotStore.changeKeysBallotType(e, ballotStore.KeysBallotType.swap),
-          text: 'Swap key',
+          text: messages.SWAPKEY,
           value: ballotStore.KeysBallotType.swap
         }
       ],
       [
         {
           checked: ballotStore.isMiningKeyType,
-          hint: 'Mining key type.',
+          hint: messages.MININGKEYREMARK,
           id: 'mining-key',
           name: 'keys',
           onChange: e => ballotStore.changeKeyType(e, ballotStore.KeyType.mining),
-          text: 'Mining Key',
+          text: messages.MININGKEY,
           value: ballotStore.KeyType.mining
         },
         {
           checked: ballotStore.isPayoutKeyType,
-          hint: 'Payout key type.',
+          hint: messages.PAYOUTKEYREMARK,
           id: 'payout-key',
           name: 'keys',
           onChange: e => ballotStore.changeKeyType(e, ballotStore.KeyType.payout),
-          text: 'Payout Key',
+          text: messages.PAYOUTKEY,
           value: ballotStore.KeyType.payout
         },
         {
           checked: ballotStore.isVotingKeyType,
-          hint: 'Voting key type.',
+          hint: messages.VOTINGKEYREMARK,
           id: 'voting-key',
           name: 'keys',
           onChange: e => ballotStore.changeKeyType(e, ballotStore.KeyType.voting),
-          text: 'Voting Key',
+          text: messages.VOTINGKEY,
           value: ballotStore.KeyType.voting
         }
       ]

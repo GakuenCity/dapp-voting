@@ -19,6 +19,7 @@ import { BallotMinThresholdCard } from '../components/BallotMinThresholdCard'
 import { BallotProxyCard } from '../components/BallotProxyCard'
 import { BallotEmissionFundsCard } from '../components/BallotEmissionFundsCard'
 import { constants } from '../utils/constants'
+import messages from '../utils/messages'
 
 import 'babel-polyfill'
 
@@ -272,16 +273,16 @@ class ContractsStore {
 
       switch (Number(votingState.ballotType)) {
         case ballotStore.KeysBallotType.add:
-          votingState.ballotTypeDisplayName = 'add'
+          votingState.ballotTypeDisplayName = messages.ADD
           if (Number(votingState.affectedKeyType) === ballotStore.KeyType.mining) {
             votingState.isAddMining = true
           }
           break
         case ballotStore.KeysBallotType.remove:
-          votingState.ballotTypeDisplayName = 'remove'
+          votingState.ballotTypeDisplayName = messages.REMOVE
           break
         case ballotStore.KeysBallotType.swap:
-          votingState.ballotTypeDisplayName = 'swap'
+          votingState.ballotTypeDisplayName = messages.SWAP
           break
         default:
           votingState.ballotTypeDisplayName = ''
@@ -304,21 +305,21 @@ class ContractsStore {
 
       switch (Number(votingState.affectedKeyType)) {
         case ballotStore.KeyType.mining:
-          votingState.affectedKeyTypeDisplayName = 'mining'
+          votingState.affectedKeyTypeDisplayName = messages.MINING
           break
         case ballotStore.KeyType.voting:
-          votingState.affectedKeyTypeDisplayName = 'voting'
+          votingState.affectedKeyTypeDisplayName = messages.VOTING
           break
         case ballotStore.KeyType.payout:
-          votingState.affectedKeyTypeDisplayName = 'payout'
+          votingState.affectedKeyTypeDisplayName = messages.PAYOUT
           break
         default:
           votingState.affectedKeyTypeDisplayName = ''
           break
       }
       if (votingState.isAddMining) {
-        if (votingState.newVotingKey) votingState.affectedKeyTypeDisplayName += ', voting'
-        if (votingState.newPayoutKey) votingState.affectedKeyTypeDisplayName += ', payout'
+        if (votingState.newVotingKey) votingState.affectedKeyTypeDisplayName += ' 和 ' + messages.VOTING
+        if (votingState.newPayoutKey) votingState.affectedKeyTypeDisplayName += ' 和 ' + messages.PAYOUT
       }
 
       if (votingState.miningKey && votingState.miningKey !== '0x0000000000000000000000000000000000000000') {
